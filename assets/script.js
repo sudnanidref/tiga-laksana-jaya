@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   window.setInterval(()=>{
     step+=1;
-    track.style.transition='transform 350ms ease-in-out';
+    track.style.transition='transform 520ms ease-in-out';
     track.style.transform=`translateX(-${step*cardDistance()}px)`;
 
     if(step>=loopLength){
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         track.style.transition='none';
         track.style.transform='translateX(0)';
         step=0;
-      },360);
+      },540);
     }
-  },500);
+  },1000);
 });

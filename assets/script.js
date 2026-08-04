@@ -28,3 +28,16 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
   },1000);
 });
+
+
+// Keep decorative muted videos playing where browser policy allows it.
+document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('video.autoplay-video').forEach(video=>{
+    video.muted=true;
+    video.defaultMuted=true;
+    video.playsInline=true;
+    const play=()=>video.play().catch(()=>{});
+    play();
+    video.addEventListener('canplay',play,{once:true});
+  });
+});

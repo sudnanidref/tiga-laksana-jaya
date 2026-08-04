@@ -189,3 +189,9 @@ dd{margin:5px 0 0;color:#4b5563}
 .footer-brand{display:inline-flex!important;gap:22px;align-items:center}
 .footer-brand .logo-mark{margin-right:8px;flex:0 0 auto}
 @media(max-width:640px){.brand-mark.logo-mark{width:44px;height:44px}.footer-brand{gap:18px}}
+
+/* Real Our Client logos */
+.client-logo.real-logo{justify-content:center;gap:14px}
+.client-logo.real-logo img{width:94px;height:68px;object-fit:contain;display:block;flex:0 0 94px;filter:none}
+.client-logo.placeholder-logo i{flex:0 0 56px}
+@media(max-width:640px){.client-logo.real-logo img{width:78px;height:56px;flex-basis:78px}}

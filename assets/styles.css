@@ -199,3 +199,11 @@ dd{margin:5px 0 0;color:#4b5563}
 /* Client logo spacing fix */
 .client-logo{overflow:hidden}
 .client-logo small{white-space:normal;overflow-wrap:anywhere}
+
+/* Alignment fixes requested */
+.section-head{margin-left:auto;margin-right:auto}
+.contact-cta-card{text-align:center}
+.contact-cta-card .btn{margin-left:auto;margin-right:auto}
+.service-grid .icon{margin-left:auto;margin-right:auto}
+.service-grid:not(.service-detail) article{text-align:center}
+.map-section .section-head{text-align:center;margin-left:auto;margin-right:auto}

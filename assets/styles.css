@@ -181,3 +181,11 @@ dd{margin:5px 0 0;color:#4b5563}
 .service-detail .service-list{display:inline-block;text-align:left}
 .process-grid article{text-align:center}
 .process-grid span{margin:0 auto 14px}
+
+/* TLJ image logo */
+.brand{gap:14px}
+.brand-mark.logo-mark{width:50px;height:50px;padding:5px;background:#fff;border:1px solid rgba(15,23,42,.10);box-shadow:0 8px 24px rgba(8,17,31,.12);overflow:hidden}
+.brand-mark.logo-mark img{width:100%;height:100%;object-fit:contain;display:block}
+.footer-brand{display:inline-flex!important;gap:22px;align-items:center}
+.footer-brand .logo-mark{margin-right:8px;flex:0 0 auto}
+@media(max-width:640px){.brand-mark.logo-mark{width:44px;height:44px}.footer-brand{gap:18px}}

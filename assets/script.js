@@ -63,3 +63,39 @@ document.addEventListener('DOMContentLoaded',()=>{
   };
   button.addEventListener('click',reveal);
 });
+
+
+// Gallery popup with zoom controls.
+document.addEventListener('DOMContentLoaded',()=>{
+  const lightbox=document.querySelector('[data-gallery-lightbox]');
+  const lightboxImg=document.querySelector('[data-gallery-lightbox-img]');
+  if(!lightbox||!lightboxImg)return;
+  const closeBtn=document.querySelector('[data-gallery-close]');
+  const zoomIn=document.querySelector('[data-gallery-zoom-in]');
+  const zoomOut=document.querySelector('[data-gallery-zoom-out]');
+  const zoomReset=document.querySelector('[data-gallery-zoom-reset]');
+  const zoomLabel=document.querySelector('[data-gallery-zoom-label]');
+  let zoom=1;
+  const applyZoom=()=>{lightboxImg.style.transform=`scale(${zoom})`; if(zoomLabel) zoomLabel.textContent=`${Math.round(zoom*100)}%`;};
+  const open=(img)=>{
+    const src=img.getAttribute('src')||img.dataset.src;
+    if(!src)return;
+    lightboxImg.src=src;
+    lightboxImg.alt=img.alt||'Foto gallery PT Tiga Laksana Jaya';
+    zoom=1; applyZoom();
+    lightbox.hidden=false;
+    document.body.classList.add('lightbox-open');
+  };
+  const close=()=>{lightbox.hidden=true; document.body.classList.remove('lightbox-open'); lightboxImg.removeAttribute('src');};
+  document.querySelectorAll('.gallery-open').forEach(btn=>btn.addEventListener('click',()=>{
+    const img=btn.querySelector('img');
+    if(img?.dataset.src && !img.getAttribute('src')){ img.loading='eager'; img.src=img.dataset.src; img.removeAttribute('data-src'); }
+    if(img) open(img);
+  }));
+  closeBtn?.addEventListener('click',close);
+  lightbox.addEventListener('click',event=>{if(event.target===lightbox) close();});
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!lightbox.hidden) close();});
+  zoomIn?.addEventListener('click',()=>{zoom=Math.min(3,zoom+.25); applyZoom();});
+  zoomOut?.addEventListener('click',()=>{zoom=Math.max(.5,zoom-.25); applyZoom();});
+  zoomReset?.addEventListener('click',()=>{zoom=1; applyZoom();});
+});

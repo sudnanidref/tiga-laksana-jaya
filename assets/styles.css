@@ -217,3 +217,36 @@ dd{margin:5px 0 0;color:#4b5563}
 .team-feature-copy p{font-size:18px;color:#4b5563;margin:0 0 16px}
 .team-feature-copy .btn{margin-top:12px}
 @media(max-width:900px){.team-feature-grid{grid-template-columns:1fr}.team-feature-copy{text-align:center}.team-feature-copy .btn{margin-inline:auto}}
+
+/* Harga pages */
+.price-option-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:38px}
+.price-option-card{display:flex;flex-direction:column;align-items:flex-start;border:1px solid var(--line);border-radius:var(--radius);padding:32px;background:#fff;box-shadow:0 12px 40px rgba(8,17,31,.07)}
+.price-option-card h2{font-size:clamp(28px,3vw,40px);margin:0 0 12px}
+.price-option-card p{color:#667085;margin:0 0 22px}
+.price-teaser{display:block;margin-bottom:24px;color:#795400;font-weight:900}
+.pricing-table-wrap{width:100%;overflow-x:auto;border:1px solid var(--line);border-radius:26px;background:#fff;box-shadow:0 14px 42px rgba(8,17,31,.07)}
+.pricing-table{width:100%;min-width:900px;border-collapse:collapse}
+.pricing-table th,.pricing-table td{padding:24px 20px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+.pricing-table th{background:var(--navy);color:#fff;font-size:12px;text-transform:uppercase;letter-spacing:.09em}
+.pricing-table tbody tr:last-child td{border-bottom:0}
+.pricing-table .package-name{font-size:20px;color:var(--navy);white-space:nowrap}
+.pricing-table .package-price{color:#795400;font-weight:900;white-space:nowrap}
+.pricing-specs{margin:0;padding-left:20px;color:#4b5563}
+.pricing-specs li{margin:0 0 6px}
+.pricing-specs li:last-child{margin-bottom:0}
+.pricing-note{margin:20px 0 0;color:#667085;font-size:14px}
+.pricing-table .btn{white-space:nowrap}
+@media(max-width:720px){
+.price-option-grid{grid-template-columns:1fr}
+.pricing-table-wrap{overflow:visible;border:0;border-radius:0;background:transparent;box-shadow:none}
+.pricing-table{display:block;min-width:0}
+.pricing-table thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.pricing-table tbody,.pricing-table tr,.pricing-table td{display:block;width:100%}
+.pricing-table tr{margin-bottom:22px;border:1px solid var(--line);border-radius:22px;background:#fff;box-shadow:0 10px 32px rgba(8,17,31,.07);overflow:hidden}
+.pricing-table th,.pricing-table td{padding:18px;border-bottom:1px solid var(--line)}
+.pricing-table td::before{content:attr(data-label);display:block;margin-bottom:6px;color:#795400;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.09em}
+.pricing-table tbody tr:last-child td{border-bottom:1px solid var(--line)}
+.pricing-table tbody tr td:last-child{border-bottom:0}
+.pricing-table .package-name,.pricing-table .package-price{white-space:normal}
+.pricing-table .btn{width:100%;white-space:normal}
+}

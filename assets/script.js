@@ -41,3 +41,25 @@ document.addEventListener('DOMContentLoaded',()=>{
     video.addEventListener('canplay',play,{once:true});
   });
 });
+
+
+// Gallery progressive loading: images after the initial batch are not requested until Load More.
+document.addEventListener('DOMContentLoaded',()=>{
+  const items=[...document.querySelectorAll('[data-gallery-item]')];
+  const button=document.querySelector('[data-gallery-load]');
+  const count=document.querySelector('[data-gallery-count]');
+  if(!items.length||!button)return;
+  const batch=6;
+  const reveal=()=>{
+    const hidden=items.filter(item=>item.hidden).slice(0,batch);
+    hidden.forEach(item=>{
+      const img=item.querySelector('img[data-src]');
+      if(img){ img.loading='eager'; img.src=img.dataset.src; img.removeAttribute('data-src'); }
+      item.hidden=false;
+    });
+    const visible=items.filter(item=>!item.hidden).length;
+    if(count) count.textContent=String(visible);
+    if(visible>=items.length) button.parentElement.hidden=true;
+  };
+  button.addEventListener('click',reveal);
+});

@@ -280,3 +280,12 @@ dd{margin:5px 0 0;color:#4b5563}
 .gallery-lightbox-controls span{min-width:58px;text-align:center;color:var(--navy);font-weight:900}
 body.lightbox-open{overflow:hidden}
 @media(max-width:640px){.gallery-lightbox{padding:18px}.gallery-lightbox-stage{width:94vw;height:72vh}.gallery-lightbox-close{top:10px;right:10px}.gallery-lightbox-controls{border-radius:22px;flex-wrap:wrap}}
+
+
+/* SEO FAQ page */
+.seo-intro{background:#fbfaf7}
+.faq-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.faq-card{border:1px solid var(--line);border-radius:24px;background:#fff;padding:28px;box-shadow:0 12px 36px rgba(8,17,31,.05)}
+.faq-card h2{font-size:22px;line-height:1.25;margin:0 0 12px;color:var(--navy)}
+.faq-card p{margin:0;color:#667085;line-height:1.7}
+@media(max-width:780px){.faq-grid{grid-template-columns:1fr}}

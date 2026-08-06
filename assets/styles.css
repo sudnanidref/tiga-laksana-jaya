@@ -306,3 +306,13 @@ body.lightbox-open{overflow:hidden}
 .footer .footer-social a:hover{transform:translateY(-2px);background:rgba(213,163,40,.18)}
 .footer-social img{width:20px;height:20px;object-fit:contain;border-radius:5px}
 @media(max-width:640px){.copyright{justify-content:center;text-align:center}.footer-social{justify-content:center;padding-right:0}}
+
+
+/* Balanced homepage project support section */
+.seo-head{margin-bottom:38px}
+.seo-head h2{max-width:900px;margin-left:auto;margin-right:auto}
+.seo-copy-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:42px;align-items:start}
+.seo-copy-grid .rich-text{border:1px solid var(--line);border-radius:28px;background:#fff;padding:34px;box-shadow:0 12px 36px rgba(8,17,31,.05)}
+.seo-copy-grid .rich-text p{font-size:17px;line-height:1.72}
+.seo-copy-grid .btn{margin-top:8px}
+@media(max-width:900px){.seo-copy-grid{grid-template-columns:1fr}.seo-copy-grid .rich-text{padding:26px}}

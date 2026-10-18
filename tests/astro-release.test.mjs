@@ -27,6 +27,10 @@ for (const route of routes) {
   assert.match(html, /<link rel="canonical" href="https:\/\/tigalaksanajaya\.com\//, `${route.path}: canonical`);
   assert.match(html, /<meta name="description" content="[^"]{80,160}"/, `${route.path}: description length`);
   assert.equal((html.match(/<h1[ >]/g) || []).length, 1, `${route.path}: H1 count`);
+  assert.equal((html.match(/googletagmanager\.com\/gtag\/js\?id=AW-18519737603/g) || []).length, 1, `${route.path}: Google tag loader count`);
+  assert.equal((html.match(/google-tag-init\.js/g) || []).length, 1, `${route.path}: Google tag init count`);
+  assert.equal((html.match(/whatsapp-tracking\.js/g) || []).length, 1, `${route.path}: WhatsApp handler count`);
+  assert.doesNotMatch(html, /Puri Shantika|AW-[0-9]+\//, `${route.path}: forbidden foreign or placeholder conversion label`);
 }
 
 const home = fs.readFileSync(path.join(root, 'dist/index.html'), 'utf8');

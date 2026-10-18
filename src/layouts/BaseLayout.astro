@@ -38,6 +38,8 @@ const {
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon-tlj-180.png?v=20260816-tlj-favicon" />
     <link rel="manifest" href="/site.webmanifest.json?v=20260816-tlj-favicon" />
     <link rel="stylesheet" href="/assets/styles.css?v=20261018-project-refresh" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18519737603"></script>
+    <script src="/assets/google-tag-init.js?v=20261018-tlj-ads" defer></script>
     {schemas.map((schema) => <script type="application/ld+json" set:html={JSON.stringify(schema)} />)}
   </head>
   <body>
@@ -45,5 +47,6 @@ const {
     <main id="main"><slot /></main>
     <Footer />
     <script src="/assets/script.js?v=20260809-cover-refresh" defer></script>
+    <script type="module" src="/assets/whatsapp-tracking.js?v=20261018-tlj-ads"></script>
   </body>
 </html>

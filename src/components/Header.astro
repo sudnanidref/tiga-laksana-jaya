@@ -1,0 +1,22 @@
+---
+const { active = '' } = Astro.props;
+const links = [
+  ['home', '/', 'Home'], ['tentang', '/tentang/', 'Tentang'], ['layanan', '/layanan/', 'Layanan'],
+  ['portfolio', '/portfolio/', 'Portfolio'], ['gallery', '/gallery/', 'Gallery'], ['team', '/team/', 'Team'],
+  ['harga', '/harga/', 'Harga'], ['legalitas', '/legalitas/', 'Legalitas'], ['kontak', '/kontak/', 'Kontak'],
+];
+---
+<a class="skip" href="#main">Lewati ke konten</a>
+<header class="site-header">
+  <nav class="nav" aria-label="Navigasi utama">
+    <a class="brand" href="/">
+      <span class="brand-mark logo-mark"><img src="/assets/tlj-logo.webp?v=20260805-align" alt="Logo PT Tiga Laksana Jaya" /></span>
+      <span><span class="brand-name">PT Tiga Laksana Jaya</span><small>Design & Build General Contractor</small></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Buka menu" aria-expanded="false">☰</button>
+    <div class="nav-links">
+      {links.map(([key, href, label]) => <a href={href} class:list={{ active: active === key }} aria-current={active === key ? 'page' : undefined}>{label}</a>)}
+    </div>
+    <a class="btn btn-small" href="/kontak/">Konsultasi</a>
+  </nav>
+</header>

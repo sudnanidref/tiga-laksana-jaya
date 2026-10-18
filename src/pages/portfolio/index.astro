@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import ReferenceCard from '../../components/ReferenceCard.astro';
+import routes from '../../data/routes.json';
+import { companyProjects, buildingReferences } from '../../data/projects.mjs';
+
+const page = routes.find(({ path }) => path === '/portfolio/');
+if (!page) throw new Error('Portfolio page is missing from routes.json');
+const projectStart = '<div class="container project-grid">';
+const projectEnd = '</div></section><section class="section building-reference-section">';
+const referenceStart = '<div class="container reference-grid">';
+const referenceEnd = '</div></section><section class="section cta-band">';
+const a = page.mainHtml.indexOf(projectStart);
+const b = page.mainHtml.indexOf(projectEnd, a);
+const c = page.mainHtml.indexOf(referenceStart, b);
+const d = page.mainHtml.indexOf(referenceEnd, c);
+if ([a, b, c, d].some((value) => value < 0)) throw new Error('Portfolio component markers not found');
+const beforeProjects = page.mainHtml.slice(0, a);
+const betweenGrids = page.mainHtml.slice(b + '</div>'.length, c);
+const afterReferences = page.mainHtml.slice(d + '</div>'.length);
+---
+<BaseLayout {...page}>
+  <Fragment set:html={beforeProjects} />
+  <div class="container project-grid">
+    {companyProjects.map((project, index) => <ProjectCard project={project} featured={index === 0} />)}
+  </div>
+  <Fragment set:html={betweenGrids} />
+  <div class="container reference-grid">
+    {buildingReferences.map((project) => <ReferenceCard project={project} />)}
+  </div>
+  <Fragment set:html={afterReferences} />
+</BaseLayout>

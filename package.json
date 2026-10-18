@@ -1,0 +1,13 @@
+{
+  "name": "tiga-laksana-jaya-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "migrate": "python3 scripts/migrate-static-to-astro.py",
+    "build": "astro build && node scripts/copy-static.mjs",
+    "test": "npm run build && node tests/astro-release.test.mjs"
+  },
+  "dependencies": {
+    "astro": "^7.4.0"
+  }
+}

@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import routes from '../data/routes.json';
+
+export function getStaticPaths() {
+  return routes
+    .filter(({ path }) => path !== '/' && path !== '/portfolio/')
+    .map((page) => ({
+      params: { slug: page.path.replace(/^\//, '').replace(/\/$/, '') },
+      props: { page },
+    }));
+}
+
+const { page } = Astro.props;
+---
+<BaseLayout {...page}>
+  <Fragment set:html={page.mainHtml} />
+</BaseLayout>

@@ -1,0 +1,7 @@
+---
+const { project, featured = false } = Astro.props;
+---
+<a class:list={['project-card', { featured }]} href={`/portfolio/${project.slug}/`}>
+  <img src={`/assets/projects-2026/${project.image}`} alt={project.name} loading="lazy" decoding="async" />
+  <div><span>{project.location}</span><h3>{project.name}</h3></div>
+</a>

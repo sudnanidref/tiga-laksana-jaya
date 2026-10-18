@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import routes from '../data/routes.json';
+import { featuredProjects } from '../data/projects.mjs';
+
+const page = routes.find(({ path }) => path === '/');
+if (!page) throw new Error('Homepage is missing from routes.json');
+const start = '<div class="container project-grid">';
+const end = '</div>\n<div class="container section-actions">';
+const startIndex = page.mainHtml.indexOf(start);
+const endIndex = page.mainHtml.indexOf(end, startIndex);
+if (startIndex < 0 || endIndex < 0) throw new Error('Homepage project-grid markers not found');
+const beforeProjects = page.mainHtml.slice(0, startIndex);
+const afterProjects = page.mainHtml.slice(endIndex + '</div>\n'.length);
+---
+<BaseLayout {...page}>
+  <Fragment set:html={beforeProjects} />
+  <div class="container project-grid">
+    {featuredProjects.map((project, index) => <ProjectCard project={project} featured={index === 0} />)}
+  </div>
+  <Fragment set:html={afterProjects} />
+</BaseLayout>

@@ -1,0 +1,10 @@
+---
+const { project } = Astro.props;
+---
+<article class="reference-card">
+  <img src={`/assets/projects-2026/${project.image}`} alt={project.name} loading="lazy" decoding="async" />
+  <div>
+    <p>{project.location}</p><h3>{project.name}</h3>
+    <dl><div><dt>Ketinggian</dt><dd>{project.floors}</dd></div><div><dt>Periode</dt><dd>{project.period}</dd></div></dl>
+  </div>
+</article>

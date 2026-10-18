@@ -1,7 +1,21 @@
 ---
+import projectImages from '../data/project-images.json';
 const { project, featured = false } = Astro.props;
+const image = projectImages[project.image];
+if (!image) throw new Error(`Missing responsive image variants for ${project.image}`);
+const small = image.variants['480'];
+const large = image.variants['960'];
 ---
 <a class:list={['project-card', { featured }]} href={`/portfolio/${project.slug}/`}>
-  <img src={`/assets/projects-2026/${project.image}`} alt={project.name} loading="lazy" decoding="async" />
+  <img
+    src={large.src}
+    srcset={`${small.src} 480w,${large.src} 960w`}
+    sizes="(max-width: 700px) 100vw, 50vw"
+    width={large.width}
+    height={large.height}
+    alt={project.name}
+    loading="lazy"
+    decoding="async"
+  />
   <div><span>{project.location}</span><h3>{project.name}</h3></div>
 </a>

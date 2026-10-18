@@ -31,6 +31,8 @@ for (const route of routes) {
 
 const home = fs.readFileSync(path.join(root, 'dist/index.html'), 'utf8');
 assert.equal((home.match(/class="project-card/g) || []).length, 5, 'home should show five selected projects');
+assert.match(home, /srcset="[^"]+480w,[^"]+960w"/, 'homepage responsive project images');
+assert.match(home, /sizes="\(max-width: 700px\) 100vw,/, 'homepage project image sizes');
 const portfolio = fs.readFileSync(path.join(root, 'dist/portfolio/index.html'), 'utf8');
 assert.equal((portfolio.match(/class="project-card/g) || []).length, 10, 'portfolio company project count');
 assert.equal((portfolio.match(/class="reference-card/g) || []).length, 20, 'portfolio building reference count');

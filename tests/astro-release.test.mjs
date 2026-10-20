@@ -35,6 +35,11 @@ for (const route of routes) {
 
 const home = fs.readFileSync(path.join(root, 'dist/index.html'), 'utf8');
 assert.equal((home.match(/class="project-card/g) || []).length, 5, 'home should show five selected projects');
+assert.match(home, /class="hero-card"[\s\S]*?klinik-orthopedi-articular-960\.webp/, 'homepage should use the landscape clinic hero');
+assert.doesNotMatch(home, /class="hero-card"[\s\S]*?kantor-wisma-ratu-960\.webp/, 'homepage must not use the tall office hero');
+const styles = fs.readFileSync(path.join(root, 'dist/assets/styles.css'), 'utf8');
+assert.match(styles, /\.hero-card img\{[^}]*aspect-ratio:16\/10/, 'homepage hero must use a compact landscape ratio');
+assert.match(home, /styles\.css\?v=20261018-hero-landscape/, 'homepage should bust the cached hero CSS');
 assert.match(home, /srcset="[^"]+480w,[^"]+960w"/, 'homepage responsive project images');
 assert.match(home, /sizes="\(max-width: 700px\) 100vw,/, 'homepage project image sizes');
 const portfolio = fs.readFileSync(path.join(root, 'dist/portfolio/index.html'), 'utf8');

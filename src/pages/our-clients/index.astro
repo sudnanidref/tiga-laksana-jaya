@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ClientCard from '../../components/ClientCard.astro';
+import { clients } from '../../data/clients.mjs';
+
+const page = {
+  title: 'Our Clients | PT Tiga Laksana Jaya',
+  description: 'Daftar klien dan mitra yang tercantum dalam dokumentasi proyek PT Tiga Laksana Jaya di berbagai sektor.',
+  canonical: 'https://tigalaksanajaya.com/our-clients/',
+  ogTitle: 'Our Clients | PT Tiga Laksana Jaya',
+  ogDescription: 'Kolaborasi proyek PT Tiga Laksana Jaya bersama klien dan mitra dari berbagai sektor.',
+  ogImage: 'https://tigalaksanajaya.com/assets/company-cover-e7e7380822.webp',
+  active: 'clients',
+  schemas: [{
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Our Clients PT Tiga Laksana Jaya',
+    url: 'https://tigalaksanajaya.com/our-clients/',
+    description: 'Daftar klien dan mitra berdasarkan dokumentasi proyek PT Tiga Laksana Jaya.',
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: clients.length,
+      itemListElement: clients.map((client, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: client.name,
+      })),
+    },
+  }],
+};
+---
+<BaseLayout {...page}>
+  <section class="page-hero clients-page-hero">
+    <div class="container">
+      <div class="breadcrumbs"><a href="/">Beranda</a><span>/</span><span>Our Clients</span></div>
+      <p class="eyebrow">Our Clients</p>
+      <h1>Kolaborasi di berbagai sektor.</h1>
+      <p class="lead">Klien dan mitra yang ditampilkan berdasarkan dokumentasi proyek dalam company profile PT Tiga Laksana Jaya.</p>
+    </div>
+  </section>
+
+  <section class="section client-directory-section" aria-labelledby="client-directory-title">
+    <div class="container section-head client-directory-head">
+      <p class="eyebrow">Klien & Mitra</p>
+      <h2 id="client-directory-title">Kepercayaan yang tumbuh melalui pelaksanaan proyek.</h2>
+      <p>Disusun dalam grid sederhana agar setiap identitas mudah dilihat, mengikuti pendekatan visual halaman referensi yang diberikan.</p>
+    </div>
+    <div class="container client-directory-grid">
+      {clients.map((client) => <ClientCard client={client} />)}
+    </div>
+  </section>
+
+  <section class="section cta-band">
+    <div class="container cta-inner">
+      <div><p class="eyebrow">Mulai Proyek</p><h2>Diskusikan kebutuhan konstruksi Anda bersama tim kami.</h2></div>
+      <a class="btn" href="/kontak/">Hubungi PT TLJ</a>
+    </div>
+  </section>
+</BaseLayout>

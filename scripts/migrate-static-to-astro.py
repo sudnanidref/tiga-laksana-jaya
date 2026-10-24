@@ -13,6 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SITEMAP = ROOT / "sitemap.xml"
 OUT = ROOT / "src/data/routes.json"
 NS = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+ASTRO_NATIVE_ROUTES = {"/our-clients/"}
 
 
 def attr(source: str, pattern: str, default: str = "") -> str:
@@ -60,6 +61,8 @@ def main() -> None:
         route = urlparse(loc.text or "").path or "/"
         if not route.endswith("/"):
             route += "/"
+        if route in ASTRO_NATIVE_ROUTES:
+            continue
         routes.append(route)
     if len(routes) != len(set(routes)):
         raise RuntimeError("Duplicate routes in sitemap.xml")

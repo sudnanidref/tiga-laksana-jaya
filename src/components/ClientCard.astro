@@ -1,0 +1,16 @@
+---
+const { client } = Astro.props;
+---
+<article class="client-directory-card">
+  <div class="client-directory-media">
+    {client.image ? (
+      <img class="client-directory-logo" src={client.image} alt={client.alt} width="320" height="180" loading="lazy" decoding="async" />
+    ) : (
+      <span class="client-monogram" aria-hidden="true">{client.monogram}</span>
+    )}
+  </div>
+  <div class="client-directory-copy">
+    <h2>{client.name}</h2>
+    <p>{client.detail}</p>
+  </div>
+</article>

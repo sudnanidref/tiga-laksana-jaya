@@ -41,7 +41,7 @@ assert.doesNotMatch(home, /class="hero-card"[\s\S]*?kantor-wisma-ratu-960\.webp/
 const styles = fs.readFileSync(path.join(root, 'dist/assets/styles.css'), 'utf8');
 assert.match(styles, /\.hero-card img\{[^}]*aspect-ratio:16\/10/, 'homepage hero must use a compact landscape ratio');
 assert.match(styles, /\.floating-wa\{[^}]*width:auto[^}]*display:flex/, 'floating WhatsApp button must be a labeled pill');
-assert.match(home, /styles\.css\?v=20261024-our-clients/, 'homepage should use the current cached CSS release');
+assert.match(home, /styles\.css\?v=20261024-burger-customers/, 'homepage should use the current cached CSS release');
 assert.match(home, /srcset="[^"]+480w,[^"]+960w"/, 'homepage responsive project images');
 assert.match(home, /sizes="\(max-width: 700px\) 100vw,/, 'homepage project image sizes');
 const portfolio = fs.readFileSync(path.join(root, 'dist/portfolio/index.html'), 'utf8');
@@ -54,6 +54,9 @@ assert.equal((clientsPage.match(/class="client-directory-card"/g) || []).length,
 assert.equal((clientsPage.match(/class="client-directory-logo"/g) || []).length, 7, 'Our Clients real logo count');
 assert.match(clientsPage, /class="client-monogram"[^>]*>WR</, 'Wisma Ratu monogram');
 assert.match(clientsPage, /<link rel="canonical" href="https:\/\/tigalaksanajaya\.com\/our-clients\/"/, 'Our Clients canonical');
+assert.match(clientsPage, /class="mobile-only-nav active"[^>]*href="\/our-clients\/"[^>]*aria-current="page"[^>]*>Our Customers<\/a>/, 'burger menu Our Customers active link');
+assert.match(styles, /\.mobile-only-nav\{display:none\}/, 'Our Customers link hidden in desktop navigation');
+assert.match(styles, /@media\(max-width:980px\)[^{]*\{[^}]*\.mobile-only-nav\{display:block\}/, 'Our Customers link visible in burger menu');
 assert.match(home, /href="\/our-clients\/"/, 'homepage link to Our Clients');
 const sitemap = fs.readFileSync(path.join(root, 'dist/sitemap.xml'), 'utf8');
 assert.match(sitemap, /https:\/\/tigalaksanajaya\.com\/our-clients\//, 'Our Clients sitemap URL');

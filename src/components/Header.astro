@@ -16,6 +16,7 @@ const links = [
     <button class="nav-toggle" type="button" aria-label="Buka menu" aria-expanded="false">☰</button>
     <div class="nav-links">
       {links.map(([key, href, label]) => <a href={href} class:list={{ active: active === key }} aria-current={active === key ? 'page' : undefined}>{label}</a>)}
+      <a class:list={['mobile-only-nav', { active: active === 'clients' }]} href="/our-clients/" aria-current={active === 'clients' ? 'page' : undefined}>Our Customers</a>
     </div>
     <a class="btn btn-small" href="/kontak/">Konsultasi</a>
   </nav>

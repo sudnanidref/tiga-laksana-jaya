@@ -47,6 +47,7 @@ assert.match(home, /sizes="\(max-width: 700px\) 100vw,/, 'homepage project image
 const portfolio = fs.readFileSync(path.join(root, 'dist/portfolio/index.html'), 'utf8');
 assert.equal((portfolio.match(/class="project-card/g) || []).length, 10, 'portfolio company project count');
 assert.equal((portfolio.match(/class="reference-card/g) || []).length, 20, 'portfolio building reference count');
+assert.doesNotMatch(portfolio, /Daftar ini ditampilkan sesuai klasifikasi/, 'portfolio should not show the removed PPTX classification note');
 assert.match(portfolio, /"@type":"ItemList"/, 'portfolio ItemList schema');
 
 const clientsPage = fs.readFileSync(path.join(root, 'dist/our-clients/index.html'), 'utf8');

@@ -30,6 +30,7 @@ for (const route of routes) {
   assert.equal((html.match(/googletagmanager\.com\/gtag\/js\?id=AW-18519737603/g) || []).length, 1, `${route.path}: Google tag loader count`);
   assert.equal((html.match(/google-tag-init\.js/g) || []).length, 1, `${route.path}: Google tag init count`);
   assert.equal((html.match(/whatsapp-tracking\.js/g) || []).length, 1, `${route.path}: WhatsApp handler count`);
+  assert.match(html, /class="floating-wa"[\s\S]*?<span>WhatsApp<\/span>/, `${route.path}: labeled floating WhatsApp button`);
   assert.doesNotMatch(html, /Puri Shantika|AW-[0-9]+\//, `${route.path}: forbidden foreign or placeholder conversion label`);
 }
 
@@ -39,7 +40,8 @@ assert.match(home, /class="hero-card"[\s\S]*?klinik-orthopedi-articular-960\.web
 assert.doesNotMatch(home, /class="hero-card"[\s\S]*?kantor-wisma-ratu-960\.webp/, 'homepage must not use the tall office hero');
 const styles = fs.readFileSync(path.join(root, 'dist/assets/styles.css'), 'utf8');
 assert.match(styles, /\.hero-card img\{[^}]*aspect-ratio:16\/10/, 'homepage hero must use a compact landscape ratio');
-assert.match(home, /styles\.css\?v=20261018-hero-landscape/, 'homepage should bust the cached hero CSS');
+assert.match(styles, /\.floating-wa\{[^}]*width:auto[^}]*display:flex/, 'floating WhatsApp button must be a labeled pill');
+assert.match(home, /styles\.css\?v=20261021-whatsapp-label/, 'homepage should use the current cached CSS release');
 assert.match(home, /srcset="[^"]+480w,[^"]+960w"/, 'homepage responsive project images');
 assert.match(home, /sizes="\(max-width: 700px\) 100vw,/, 'homepage project image sizes');
 const portfolio = fs.readFileSync(path.join(root, 'dist/portfolio/index.html'), 'utf8');
